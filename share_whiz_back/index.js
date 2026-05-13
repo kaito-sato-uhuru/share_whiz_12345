@@ -44,6 +44,7 @@ app.post("/posts", upload.single('image'), async (req, res) => {
     console.log(error)
     res.status(500).send("タスクの保存に失敗しました")
   }
+<<<<<<< add-list-display
 });
 
 app.get("/posts", async(req, res) => {
@@ -62,4 +63,6 @@ app.get("/posts", async(req, res) => {
   } catch(error) {
   console.log(error)
   }
+=======
+>>>>>>> master
 })

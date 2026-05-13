@@ -1,3 +1,4 @@
+<<<<<<< add-list-display
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -20,3 +21,28 @@ model Task {
   image     String?
   created_at  DateTime?
 }
+=======
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id           Int      @default(autoincrement()) @id
+  title         String
+  body  String
+  image    String?
+  created_at DateTime
+  }
+n
+>>>>>>> master
