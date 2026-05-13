@@ -24,10 +24,10 @@ const calculateTimeAgo = (dateString) => {
         <div class="post-details">
           <h3 class="post-title">{{ post.title }}</h3>
           <p class="post-body">{{ post.body }}</p>
-          <div v-if="post.image_url" class="image-container">
+          <div v-if="post.image" class="image-container">
             <div class="image-wrapper">
               <img
-                :src="post.image_url"
+                :src="post.image"
                 :alt="post.title"
                 class="post-image"
               />

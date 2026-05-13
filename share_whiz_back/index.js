@@ -23,7 +23,7 @@ app.listen(3000, () => {
 app.post("/posts", upload.single('image'), async (req, res) => {
   console.log("リクエストボディ",req.body)
   try {
-    const imagePath = req.file ? req.file.path : null; 
+    const imagePath = req.file ? `uploads/${req.file.filename}` : null; 
     const postData = await prisma.task.create({
       data: {
         title: req.body.title,
