@@ -46,3 +46,20 @@ app.post("/posts", upload.single('image'), async (req, res) => {
   }
 });
 
+app.get("/posts", async(req, res) => {
+  try {
+  const AllPosts = await prisma.task.findMany();
+  const updatedPosts = AllPosts.map((task) => {
+    if (task.image) {
+      task.image = `http://localhost:3000/${task.image}`
+    } else {
+      task.image = null;
+    }
+    return task;
+  });
+
+  res.json(updatedPosts)
+  } catch(error) {
+  console.log(error)
+  }
+})

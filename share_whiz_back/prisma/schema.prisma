@@ -18,5 +18,5 @@ model Task {
   title     String
   body      String
   image     String?
-  created_at  DateTime
+  created_at  DateTime?
 }
