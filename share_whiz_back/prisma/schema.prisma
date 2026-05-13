@@ -12,3 +12,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Task {
+  id        Int  @default(autoincrement()) @id
+  title     String
+  body      String
+  image     String?
+  created_at  DateTime
+}
