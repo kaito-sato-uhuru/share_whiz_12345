@@ -3,7 +3,6 @@ import Dashboard from '../components/Dashboard.vue'
 import SignIn from '../components/SignIn.vue'
 import SignUp from '../components/SignUp.vue';
 import SearchResult from '../components/SearchResult.vue'
-// TODO: firebase.jsから必要な関数をインポートしましょう
 import { auth, onAuthStateChanged } from '../firebase';
 const routes = [
   {
