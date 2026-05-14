@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-// TODO: firebase.jsから必要な関数をインポートしましょう
+import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '../firebase';
 
 
 const router = useRouter();
@@ -10,12 +10,14 @@ const password = ref('');
 const nickname = ref('');
 
 const handleSignUp = async() => {
-  // TODO: ユーザーの新規登録機能を実装しましょう
-  // 1. createUserWithEmailAndPasswordでユーザーを登録
-  // 2. updateProfileでニックネームを設定
-  // 3. 登録成功後、/dashboardに遷移
-  // 4. エラー時はコンソールにエラーを表示
+  try {
+    await createUserWithEmailAndPassword(auth,email.value, password.value)
+    router.push("/dashboard");
+  }catch(error) {
+    console.log('ユーザー登録できませんでした', error)
+  }
 }
+
 </script>
 
 <template>
