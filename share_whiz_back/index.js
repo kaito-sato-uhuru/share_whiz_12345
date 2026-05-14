@@ -97,7 +97,3 @@ app.get('/search', async (req, res) => {
    res.status(500).json({ message: "検索処理に失敗しました" }); 
  } 
 }); 
-
-app.listen(3000, () => {
-  console.log("listening on localhost 3000")
-})
