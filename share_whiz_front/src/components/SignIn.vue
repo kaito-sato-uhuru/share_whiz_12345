@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 // TODO: firebase.jsから必要な関数をインポートしましょう
+import { auth, signInWithEmailAndPassword } from '../firebase';
 
 const email = ref('');
 const password = ref('');
@@ -14,6 +15,13 @@ const handleSignIn = async() => {
   // 1. signInWithEmailAndPasswordでログイン
   // 2. ログイン成功後、/dashboardに遷移
   // 3. エラー時はコンソールにエラーを表示
+
+  try{
+    await signInWithEmailAndPassword(auth, email.value, password.value)
+    router.push("/dashboard")
+  }catch(error){
+    console.log('ログインに失敗しました')
+  }
 };
 </script>
 

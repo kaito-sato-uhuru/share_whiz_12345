@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 // TODO: firebase.jsから必要な関数をインポートしましょう
 // TODO: firebase/authから必要な関数をインポートしましょう
 import FormModal from './FormModal.vue'
+import { auth, signOut } from '../firebase';
 
 
 const router = useRouter()
@@ -19,6 +20,12 @@ const handleSignOut = async () => {
   // 1. signOutでログアウト
   // 2. ログアウト成功後、/に遷移
   // 3. エラー時はコンソールにエラーを表示
+  try{
+    await signOut(auth)
+    router.push("/")
+  }catch(error){
+    console.log('ログアウトに失敗しました')
+  }
 }
 
 const closeModal = () => {
