@@ -65,3 +65,35 @@ app.get("/posts", async(req, res) => {
   console.log(error)
   }
 });
+
+app.get('/search', async (req, res) => { 
+ const query = req.query.q || ''; 
+ 
+ try { 
+   const tasks = await prisma.task.findMany({ 
+     where: { 
+       title: { 
+         contains: query,  
+         mode: 'insensitive'  
+       } 
+     }, 
+     orderBy: { 
+      created_at: 'desc'
+     } 
+   }); 
+ 
+   const updatedTasks = tasks.map((task) => { 
+     if (task.image) { 
+       task.image = `http://localhost:3000/${task.image}` 
+     } else { 
+       task.image = null; 
+     } 
+     return task; 
+   }); 
+ 
+   res.json(updatedTasks);  
+ } catch (error) { 
+   console.error("検索処理に失敗しました:", error); 
+   res.status(500).json({ message: "検索処理に失敗しました" }); 
+ } 
+}); 
