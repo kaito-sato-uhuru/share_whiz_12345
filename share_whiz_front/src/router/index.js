@@ -32,11 +32,6 @@ const router = createRouter({
   routes
 });
 
-// TODO: ナビゲーションガードを実装しましょう
-// router.beforeEachを使用して、以下の条件でルーティングを制御します
-// 1. 未ログインユーザーが/dashboardや/searchにアクセスした場合、/にリダイレクト
-// 2. ログイン済みユーザーが/や/signupにアクセスした場合、/dashboardにリダイレクト
-
 function getCurrentUser(auth) {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
